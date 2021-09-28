@@ -36,7 +36,9 @@ def check_result():
     print(status.text);
     
 def check_score():
-    status = requests.get('smoreurl/scorefile');
+    tmp = url + "score"
+    s = requests.post(tmp);
+    print(s.text)
 
 def reset():
     valid_input = False;
@@ -50,7 +52,11 @@ def reset():
             tmp = url + "reset"
             r = requests.post(tmp);
             print(r.text)
-            
+def close():
+    tmp = url + "reset"
+    r = requests.post(tmp);
+    print(r.text)
+
 def main():
     loop = True
     while (loop): 
@@ -71,7 +77,8 @@ def main():
             reset()
             
         elif choice == 5:
-            print("Goodbye");
+            close()
+            print("Goodbye")
             loop = False
             
         else:
